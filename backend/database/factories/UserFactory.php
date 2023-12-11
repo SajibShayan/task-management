@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\AccountStatus;
+use App\Enums\RoleType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -21,10 +23,14 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('p@ssword10'),
+            'phone' => fake()->phoneNumber(),
+            'address' => fake()->address(),
+            'photo' => fake()->imageUrl(60, 60),
+            'status' => fake()->randomElement(AccountStatus::class),
             'remember_token' => Str::random(10),
         ];
     }
