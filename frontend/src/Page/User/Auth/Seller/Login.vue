@@ -12,10 +12,10 @@ const state = reactive({
 const handleSubmit =async () => {
   // console.log(state, "the state value");
 
-  // const body = {...state}
+  const body = {...state}
 
-  // const response =  await axios.post("/login", body);
-  const response = await axios.get('/hi');
+  const response =  await axios.post("/login", body);
+  // const response = await axios.get('/hi');
   console.log(response, "the get response")
 }
 
