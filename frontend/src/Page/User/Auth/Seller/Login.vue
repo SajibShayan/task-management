@@ -1,21 +1,41 @@
 <script setup>
+import { reactive } from "vue";
 import MainLayout from "../../../../Layouts/MainLayout.vue";
+import axios from "../../../../Services/axios";
+
+const state = reactive({
+  email: 'abc@abc.com',
+  password: 'abc@abc.com',
+
+})
+
+const handleSubmit =async () => {
+  // console.log(state, "the state value");
+
+  // const body = {...state}
+
+  // const response =  await axios.post("/login", body);
+  const response = await axios.get('/hi');
+  console.log(response, "the get response")
+}
+
+
 </script>
 
 <template>
   <MainLayout>
     <template #main>
-      <section class="bg-gray-50">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Sign in to your account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
+              <form class="space-y-4 md:space-y-6" @submit.prevent="handleSubmit">
                 <div>
                   <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
                   <input
+                  v-model="state.email"
                     type="email"
                     name="email"
                     id="email"
@@ -27,6 +47,7 @@ import MainLayout from "../../../../Layouts/MainLayout.vue";
                 <div>
                   <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                   <input
+                    v-model="state.password"
                     type="password"
                     name="password"
                     id="password"
@@ -43,7 +64,6 @@ import MainLayout from "../../../../Layouts/MainLayout.vue";
                         aria-describedby="remember"
                         type="checkbox"
                         class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                        required=""
                       />
                     </div>
                     <div class="ml-3 text-sm">
@@ -54,7 +74,7 @@ import MainLayout from "../../../../Layouts/MainLayout.vue";
                 </div>
                 <button
                   type="submit"
-                  class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  class="btn-primary w-full justify-center"
                 >
                   Sign in
                 </button>
@@ -66,7 +86,6 @@ import MainLayout from "../../../../Layouts/MainLayout.vue";
             </div>
           </div>
         </div>
-      </section>
     </template>
   </MainLayout>
 </template>

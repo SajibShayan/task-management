@@ -4,7 +4,7 @@
 
 <template>
 
-    <div  class="container pt-4 flex gap-3 self-start flex-1 justify-between !items-stretch">
+    <div  class="container w-full pt-4 flex gap-3 self-start flex-1 justify-between !items-stretch">
 
         <main class="w-full min-h-full">
                 <slot name="main" />
