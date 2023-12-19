@@ -20,7 +20,7 @@ const handleSubmit = async () => {
     storage.setItem("user", response.data.user);
 
     console.log(response, "the response value");
-    return router.push({ name: "about" });
+    return router.push({ name: "dashboard" });
   } catch (error) {
     console.log(error, "the error value");
   }

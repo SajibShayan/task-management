@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         ], 200);
     }
 
-    public function logout(Request $request)
+    public function destroy(Request $request)
     {
         $user = $request->user();
         $user->tokens()->delete();

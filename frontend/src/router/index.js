@@ -17,6 +17,11 @@ const  routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../views/AboutView.vue')
   },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('@/Page/Admin/Dashboard/Index.vue')
+  }
 
 ]
 const router = createRouter({
