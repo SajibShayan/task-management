@@ -1,49 +1,43 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue';
-import storage from '../Services/storage';
-import SellerLogin from '@/Page/User/Auth/Seller/Login.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import storage from "../Services/storage";
+import SellerLogin from "@/Page/User/Auth/Seller/Login.vue";
 
-const  routes = [
+const routes = [
   {
-    path: '/',
-    name: 'login',
-    component: SellerLogin
+    path: "/",
+    name: "login",
+    component: SellerLogin,
+    meta: { title: 'Login' } 
   },
   {
-    path: '/about',
-    name: 'about',
+    path: "/about",
+    name: "about",
     // route level code-splitting
     // this generates a separate chunk (About.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/AboutView.vue')
+    component: () => import("../views/AboutView.vue"),
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: () => import('@/Page/Admin/Dashboard/Index.vue')
-  }
-
-]
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("@/Page/Admin/Dashboard/Index.vue"),
+    meta: { title: 'Dashboard' } 
+  },
+];
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
-})
-
-router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !localStorage.getItem('token')) {
-
-
-      // return { name: 'Login' };
-
-      return router.push({
-          path: '/login'
-      });
-
-  }
-  else {
-      next();
-  }
-  
+  routes,
 });
 
-export default router
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !localStorage.getItem("token")) {
+    return router.push({
+      path: "/login",
+    });
+  } else {
+    next();
+  }
+});
+
+export default router;
