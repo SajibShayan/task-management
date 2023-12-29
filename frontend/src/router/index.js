@@ -24,6 +24,12 @@ const routes = [
     component: () => import("@/Page/Admin/Dashboard/Index.vue"),
     meta: { title: 'Dashboard', requiresAuth: true } 
   },
+  {
+    path: "/banner",
+    name: "banner",
+    component: () => import("@/Page/Admin/Banner/Index.vue"),
+    meta: { title: 'Banner', requiresAuth: true } 
+  },
 ];
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
