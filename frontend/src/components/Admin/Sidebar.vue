@@ -28,6 +28,7 @@ import {
 } from "@heroicons/vue/24/outline";
 import router from '@/router'
 import { useRoute } from "vue-router";
+import { useParentPathName } from "../../Composable/fetch";
 
 const location = useRoute();
 
@@ -136,7 +137,7 @@ const navigation = ref([
         v-for="item in navigation" :key="item.name"
         @click="router.push({ path: item.href })"
         class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer"
-        :class="item.href === location.path ? 'bg-gray-200' : ''"
+        :class="useParentPathName(item.href) == useParentPathName(location.path) ? 'bg-gray-200' : ''"
       >
         <component :is="item.icon" class="mr-2 flex-shrink-0 h-6 w-6" aria-hidden="true" />
         <span class="text-gray-700">{{ item.name }}</span>
