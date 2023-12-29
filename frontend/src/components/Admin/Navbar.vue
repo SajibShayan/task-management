@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 import axios from '@/Services/axios.js';
 import storage from '@/Services/storage.js';
 import router from '@/router'
+import { errorNotification, successNotification } from '../../Composable/notification';
 
 const state = reactive({
   dropDownOpen: false,
@@ -18,10 +19,11 @@ const handleLogout =async () => {
     storage.clearItem('user');
     toogleDropdown();
 
+    successNotification('Successfully logged out.')
     return router.push({ name: "login" });
 
   } catch (error) {
-    console.log(error, "logout error");
+    errorNotification('Something wrong..!');
   }
 }
 </script>

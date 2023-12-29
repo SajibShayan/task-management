@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'full_name' => 'Jack Admin',
             'user_name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@tbuy.com',
             'password' => Hash::make('p@ssword10'),
             'status' => 'active',
         ]);
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         $seller = User::create([
             'full_name' => 'Jack Seller',
             'user_name' => 'Seller',
-            'email' => 'seller@gmail.com',
+            'email' => 'seller@tbuy.com',
             'password' => Hash::make('p@ssword10'),
             'status' => 'active',
         ]);
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         $buyer = User::create([
             'full_name' => 'Jack Buyer',
             'user_name' => 'Buyer',
-            'email' => 'buyer@gmail.com',
+            'email' => 'buyer@tbuy.com',
             'password' => Hash::make('p@ssword10'),
             'status' => 'active',
         ]);

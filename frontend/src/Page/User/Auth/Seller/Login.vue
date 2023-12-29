@@ -4,10 +4,11 @@ import MainLayout from "../../../../Layouts/MainLayout.vue";
 import axios from "../../../../Services/axios";
 import storage from "@/Services/storage"
 import router from '@/router'
+import { errorNotification,successNotification } from '@/Composable/notification'
 
 const state = reactive({
-  email: "abc@abc.com",
-  password: "abc@abc.com",
+  email: "admin@tbuy.com",
+  password: "p@ssword10",
 });
 
 const handleSubmit = async () => {
@@ -19,10 +20,11 @@ const handleSubmit = async () => {
     storage.setItem("token", response.data.token);
     storage.setItem("user", response.data.user);
 
-    console.log(response, "the response value");
+    successNotification('Successfully logged in.');
     return router.push({ name: "dashboard" });
+
   } catch (error) {
-    console.log(error, "the error value");
+    errorNotification('Unathorized, please try again!')
   }
 };
 </script>

@@ -22,7 +22,7 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: () => import("@/Page/Admin/Dashboard/Index.vue"),
-    meta: { title: 'Dashboard' } 
+    meta: { title: 'Dashboard', requiresAuth: true } 
   },
 ];
 const router = createRouter({
@@ -33,7 +33,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !localStorage.getItem("token")) {
     return router.push({
-      path: "/login",
+      path: "/",
     });
   } else {
     next();
