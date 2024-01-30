@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\AccountStatus;
 use App\Enums\RoleType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -56,4 +57,9 @@ class User extends Authenticatable
         'role' => RoleType::class,
         'status' => AccountStatus::class,
     ];
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
 }

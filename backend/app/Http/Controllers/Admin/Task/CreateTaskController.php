@@ -17,9 +17,7 @@ class CreateTaskController extends Controller
     public function __invoke(CreateTaskRequest $request, TaskRepositoryInterface $taskRepository)
     {
         $payload = $request->validated();
-        if(!$payload){
-            return response()->json(['status' => 'failed', 'error' => $payload], 422);
-        }
+        
          $payload['user_id'] = Auth::id();
          $taskRepository->create($payload);
          Cache::flush();
