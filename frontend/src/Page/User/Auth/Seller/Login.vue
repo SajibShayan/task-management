@@ -7,7 +7,7 @@ import router from '@/router'
 import { errorNotification,successNotification } from '@/Composable/notification'
 
 const state = reactive({
-  email: "admin@tbuy.com",
+  email: "admin@gmail.com",
   password: "p@ssword10",
 });
 
@@ -21,7 +21,7 @@ const handleSubmit = async () => {
     storage.setItem("user", response.data.user);
 
     successNotification('Successfully logged in.');
-    return router.push({ name: "dashboard" });
+    return router.push({ name: "task" });
 
   } catch (error) {
     errorNotification('Unathorized, please try again!')

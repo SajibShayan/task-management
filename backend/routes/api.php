@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 Route::group([], function () {
-
+    Route::prefix('task')->as('tasks:')
+    ->group(
+        base_path('routes/resources/task.php'),
+    );
 });

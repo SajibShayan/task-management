@@ -22,7 +22,7 @@ import Sidebar from '../components/Admin/Sidebar.vue';
             </slot>
           </div>
   
-          <Footer />
+          <!-- <Footer /> -->
   
         </div>
       </div>
