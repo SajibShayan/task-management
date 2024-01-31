@@ -63,27 +63,9 @@ const handleSubmit = async () => {
                   required=""
                 />
               </div>
-              <div class="flex items-center justify-between">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                    />
-                  </div>
-                  <div class="ml-3 text-sm">
-                    <label for="remember" class="text-gray-500">Remember me</label>
-                  </div>
-                </div>
-                <a href="#" class="text-sm font-medium text-primary-600 hover:underline">Forgot password?</a>
-              </div>
+             
               <button type="submit" class="btn-primary w-full justify-center">Sign in</button>
-              <p class="text-sm font-light text-gray-500">
-                Don’t have an account yet?
-                <a href="#" class="font-medium text-primary-600 hover:underline">Sign up</a>
-              </p>
+             
             </form>
           </div>
         </div>
