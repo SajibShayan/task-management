@@ -7,7 +7,7 @@ import router from './router'
 const app = createApp(App)
 
 router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title} - TBUY`;
+    document.title = `${to.meta.title} - TM`;
     next();
   });
 

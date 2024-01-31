@@ -26,6 +26,7 @@ const defaultType = allStatus.findIndex((i) => i.name === state.status);
 const getTaskStatus = (type) => (state.status = type);
 
 const separateTasksByStatus = () => {
+ 
   allTask.value.forEach(task => {
     if (task.status === 'incomplete' && !incompleteTasks.value.find(t => t.id === task.id)) {
       incompleteTasks.value.push(task);
@@ -35,14 +36,17 @@ const separateTasksByStatus = () => {
   });
 };
 
-
 const getAllTask = async() => {
   try {
-    
+
     state.searchTerm = state.status;
     state.searchTerm = state.searchTerm.toLowerCase();
     const response = await axios.get(`/task?status=${state.searchTerm}&page=${page}`);
-    allTask.value = [...allTask.value, ...response?.data?.data?.data];
+
+    incompleteTasks.value = [];
+    completeTasks.value = [];
+
+    allTask.value = response?.data?.data?.data || [];
     
     separateTasksByStatus();
 
@@ -67,17 +71,18 @@ onMounted(() => {
 watch(
   () => state.status,
   (newValue, oldValue) => {
-    // if (oldValue !== newValue) {
       page = 1;
       allTask.value = [];
       incompleteTasks.value = [];
       completeTasks.value = [];
       getAllTask();
-    // }
   },
   {immediate: true}
 );
 </script>
+
+
+
 <template>
   <AdminLayout>
     <template #main>
@@ -124,7 +129,7 @@ watch(
     overlay-opacity="99">
     <TaskForm
        :handle-close="() => (state.isOpen = false)" 
-       :get-all-task="getAllTask"            
+       :get-all-task="getAllTask"  
       />
       <template #footer>{{}}</template>
     </Modal>

@@ -20,6 +20,7 @@
     "@uppy/progress-bar": "^3.0.4",
     "@uppy/status-bar": "^3.2.5",
     "@uppy/vue": "^1.1.0",
+    "@vueuse/core": "^10.3.0",
     "axios": "^1.6.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5",
